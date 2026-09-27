@@ -17,3 +17,4 @@ bin\*
 /release/gen
 bin/gen/*
 bin/internal-mir/Rez.mir
+bin/*
