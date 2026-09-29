@@ -2,23 +2,38 @@ import Toybox.Application;
 import Toybox.Lang;
 import Toybox.WatchUi;
 
+(:glance)
 class FloodAwareApp extends Application.AppBase {
+
+    private var _model as FloodDataModel;
+    private var _serviceDelegate as FloodServiceDelegate;
 
     function initialize() {
         AppBase.initialize();
+        _model = new FloodDataModel();
+        _serviceDelegate = new FloodServiceDelegate(method(:onDataReceived));
     }
 
-    // onStart() is called on application start up
     function onStart(state as Dictionary?) as Void {
+        _serviceDelegate.fetchFloodData(13.83f, 100.58f);
     }
 
-    // onStop() is called when your application is exiting
     function onStop(state as Dictionary?) as Void {
     }
 
-    // Return the initial view of your application here
     function getInitialView() as [Views] or [Views, InputDelegates] {
-        return [ new FloodAwareView() ];
+        return [ new FloodAwareView(_model) ];
+    }
+
+    function onDataReceived(data as Dictionary or String or Null) as Void {
+        if (data instanceof Dictionary) {
+            _model.parseJson(data as Dictionary);
+            WatchUi.requestUpdate(); // Redraw UI
+        }
+    }    
+
+    function getGlanceView(){
+        return [ new FloodGlanceView(_model) ];
     }
 
 }

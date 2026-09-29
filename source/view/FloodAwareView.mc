@@ -2,32 +2,45 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 
 class FloodAwareView extends WatchUi.View {
+    private var _model as FloodDataModel;
 
-    function initialize() {
+    function initialize(model as FloodDataModel) {
         View.initialize();
+        _model = model;
     }
 
-    // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
     }
 
-    // Called when this View is brought to the foreground. Restore
-    // the state of this View and prepare it to be shown. This includes
-    // loading resources into memory.
-    function onShow() as Void {
-    }
+    function onShow() as Void {}
 
-    // Update the view
     function onUpdate(dc as Dc) as Void {
-        // Call the parent onUpdate function to redraw the layout
         View.onUpdate(dc);
+
+        var w = dc.getWidth();
+        var h = dc.getHeight();
+
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(w / 2, h * 0.12, Graphics.FONT_SMALL, "BANGKOK", Graphics.TEXT_JUSTIFY_CENTER);
+
+        dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(w / 2, h * 0.26, Graphics.FONT_NUMBER_HOT, "2.450", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(w / 2, h * 0.56, Graphics.FONT_SMALL, "m³/s", Graphics.TEXT_JUSTIFY_CENTER);
+
+        dc.setColor(Graphics.COLOR_YELLOW,  Graphics.COLOR_TRANSPARENT);
+        dc.fillRoundedRectangle(
+            (w * 0.15).toNumber(), // x
+            (h * 0.75).toNumber(), // y
+            (w * 0.7).toNumber(), // width
+            32, // height
+            20 // radius
+        );            
+
+        dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+        dc.drawText(w / 2, h * 0.75, Graphics.FONT_SMALL, "HIGH SURGE", Graphics.TEXT_JUSTIFY_CENTER);
     }
 
-    // Called when this View is removed from the screen. Save the
-    // state of this View here. This includes freeing resources from
-    // memory.
-    function onHide() as Void {
-    }
-
+    function onHide() as Void {}
 }
