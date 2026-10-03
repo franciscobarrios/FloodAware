@@ -2,7 +2,6 @@ import Toybox.WatchUi;
 import Toybox.Graphics;
 import Toybox.Lang;
 
-(:glance)
 class FloodGlanceView extends WatchUi.GlanceView {
 
     private var _model as FloodDataModel;

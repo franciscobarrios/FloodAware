@@ -10,16 +10,7 @@ class FloodAwareViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onSelect() as Lang.Boolean {
-        WatchUi.pushView(
-            new FloodTrendView(_model),
-            new FloodTrendViewDelegate(_model),
-            WatchUi.SLIDE_LEFT
-        );
-        return true;
-    }
-
-    function onNextPage() as Lang.Boolean {
-        WatchUi.pushView(
+        WatchUi.switchToView(
             new FloodTrendView(_model),
             new FloodTrendViewDelegate(_model),
             WatchUi.SLIDE_LEFT
@@ -28,24 +19,19 @@ class FloodAwareViewDelegate extends WatchUi.BehaviorDelegate {
     }
 
     function onKey(keyEvent as WatchUi.KeyEvent) as Lang.Boolean {
-        if (
-            keyEvent.getKey() == WatchUi.KEY_UP ||
-            keyEvent.getKey() == WatchUi.KEY_DOWN ||
-            keyEvent.getKey() == WatchUi.KEY_START
-        ) {
-            WatchUi.pushView(
+        var key = keyEvent.getKey();
+        if (key == WatchUi.KEY_ENTER || key == WatchUi.KEY_START) {
+            WatchUi.switchToView(
                 new FloodTrendView(_model),
                 new FloodTrendViewDelegate(_model),
                 WatchUi.SLIDE_LEFT
             );
-            return true;
+            return true; // Handled
         }
+        return false; // Let OS / BehaviorDelegate process other keys
+    }
 
-        WatchUi.pushView(
-            new FloodTrendView(_model),
-            new FloodTrendViewDelegate(_model),
-            WatchUi.SLIDE_LEFT
-        );
+    function onBack() as Lang.Boolean {
         return true;
     }
 }
