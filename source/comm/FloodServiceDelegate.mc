@@ -12,7 +12,7 @@ class FloodServiceDelegate {
 
     // Requests river discharge data using the GloFAS model endpoint
     function fetchFloodData(lat as Float, lon as Float) as Void {
-        var url = "https://flood-api.open-meteo.com/v1/flood";
+        var url = BASE_URL; // Use the constant defined in Config.mc
         
         var params = {
             "latitude" => lat.toString(),

@@ -2,6 +2,7 @@ import Toybox.Graphics;
 import Toybox.WatchUi;
 
 class FloodAwareView extends WatchUi.View {
+
     private var _model as FloodDataModel;
 
     function initialize(model as FloodDataModel) {
@@ -21,11 +22,23 @@ class FloodAwareView extends WatchUi.View {
         var w = dc.getWidth();
         var h = dc.getHeight();
 
+        // city
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(w / 2, h * 0.12, Graphics.FONT_SMALL, "BANGKOK", Graphics.TEXT_JUSTIFY_CENTER);
 
+        // valid data   
+        if(_model.isValid) {
+            //dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
+            //dc.drawText(w * 0.5, h * 0.5, Graphics.FONT_SMALL, "Loading data ...", Graphics.TEXT_JUSTIFY_CENTER);
+            //return;
+        }
+
+        // Main metric (discharge)
+        var dischargeStr = _model.currentDischarge.format("%.0f");
+
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        dc.drawText(w / 2, h * 0.26, Graphics.FONT_NUMBER_HOT, "2.450", Graphics.TEXT_JUSTIFY_CENTER);
+        dc.drawText(w / 2, h * 0.26, Graphics.FONT_NUMBER_HOT, dischargeStr, Graphics.TEXT_JUSTIFY_CENTER);
+        
         dc.setColor(Graphics.COLOR_LT_GRAY, Graphics.COLOR_TRANSPARENT);
         dc.drawText(w / 2, h * 0.56, Graphics.FONT_SMALL, "m³/s", Graphics.TEXT_JUSTIFY_CENTER);
 
