@@ -1,6 +1,5 @@
-using Toybox.WatchUi;
-using Toybox.Graphics;
-using Toybox.Lang;
+import Toybox.Graphics;
+import Toybox.WatchUi;
 
 class DetailView extends WatchUi.View {
     function initialize() {
@@ -11,13 +10,11 @@ class DetailView extends WatchUi.View {
         setLayout(Rez.Layouts.DetailLayout(dc));
     }
 
-    function onShow() as Void {
-    }
+    function onShow() as Void {}
 
     function onUpdate(dc as Dc) as Void {
         View.onUpdate(dc);
     }
 
-    function onHide() as Void {
-    }
+    function onHide() as Void {}
 }
