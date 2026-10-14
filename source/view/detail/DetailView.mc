@@ -1,7 +1,9 @@
 import Toybox.Graphics;
 import Toybox.WatchUi;
+import Toybox.Lang;
 
 class DetailView extends WatchUi.View {
+
     function initialize() {
         View.initialize();
     }

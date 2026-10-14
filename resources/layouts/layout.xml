@@ -3,8 +3,12 @@
 
     <layouts>
 
-        <layout  id="MainLayout" />
-        <layout id="DetailLayout"></layout>
+        <layout id="MainLayout" >
+            <label text="Main " x="30%" y="30%" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" />
+        </layout>
+        <layout id="DetailLayout">
+            <label text="Detail " x="30%" y="30%" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" />
+        </layout>
 
     </layouts>
 

@@ -6,7 +6,6 @@ class MainView extends WatchUi.View {
         View.initialize();
     }
 
-    // Load your resources here
     function onLayout(dc as Dc) as Void {
         setLayout(Rez.Layouts.MainLayout(dc));
     }
@@ -16,6 +15,6 @@ class MainView extends WatchUi.View {
     function onUpdate(dc as Dc) as Void {
         View.onUpdate(dc);
     }
-
     function onHide() as Void {}
+
 }

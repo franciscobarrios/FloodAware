@@ -1,3 +1,15 @@
-<layout id="MainLayout" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
-    <bitmap id="id_monkey" x="center" y="center" filename="../drawables/monkey.png" />
-</layout>
+<resources xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="https://developer.garmin.com/downloads/connect-iq/resources.xsd">
+
+    <layouts>
+
+        <layout id="MainLayout" >
+            <label text="Main " x="30%" y="30%" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" />
+        </layout>
+        <layout id="DetailLayout">
+            <label text="Detail " x="30%" y="30%" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" />
+        </layout>
+
+    </layouts>
+
+</resources>
