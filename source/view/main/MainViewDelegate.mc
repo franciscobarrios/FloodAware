@@ -2,13 +2,16 @@ import Toybox.WatchUi;
 import Toybox.Lang;
 
 class MainViewDelegate extends WatchUi.BehaviorDelegate {
-    function initialize() {
+    private var _model as FloodDataModel;
+
+    function initialize(model as FloodDataModel) {
         BehaviorDelegate.initialize();
+        _model = model;
     }
 
     function onTap(keyEvent as WatchUi.ClickEvent) as Lang.Boolean {
         WatchUi.pushView(
-            new DetailView(),
+            new DetailView(_model),
             new DetailViewDelegate(),
             WatchUi.SLIDE_LEFT
         );
@@ -18,7 +21,7 @@ class MainViewDelegate extends WatchUi.BehaviorDelegate {
 
     function onKey(keyEvent as WatchUi.KeyEvent) as Lang.Boolean {
         WatchUi.pushView(
-            new DetailView(),
+            new DetailView(_model),
             new DetailViewDelegate(),
             WatchUi.SLIDE_LEFT
         );
