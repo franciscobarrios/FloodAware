@@ -13,7 +13,7 @@ class FloodGlanceView extends WatchUi.GlanceView {
 
     // Draw a clean minimalist wave icon at top-left
     private function drawWaveLogo(dc as Dc, x as Number, y as Number) as Void {
-        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(Graphics.COLOR_BLUE, Graphics.COLOR_WHITE);
 
         // Wave crest polygon points
         var wavePoints = [
@@ -38,7 +38,7 @@ class FloodGlanceView extends WatchUi.GlanceView {
 
         // 1. Header Title
         dc.setColor(Graphics.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-        drawWaveLogo(dc, 5, 5);
+        drawWaveLogo(dc, 5, 8);
 
         // 2. Offline / Loading Fallback State
         if (!_model.isValid) {
@@ -70,11 +70,11 @@ class FloodGlanceView extends WatchUi.GlanceView {
 
         // 4. Draw Pill Status Box (Top Right)
         var pillWidth = 75;
-        var pillHeight = 18;
+        var pillHeight = 24;
         var pillX = width - pillWidth - 5;
-        var pillY = 5;
+        var pillY = 20;
 
-        dc.setColor(statusColor, Graphics.COLOR_TRANSPARENT);
+        dc.setColor(statusColor, Graphics.COLOR_WHITE);
         dc.fillRoundedRectangle(pillX, pillY, pillWidth, pillHeight, 4);
 
         dc.setColor(Graphics.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
@@ -90,8 +90,8 @@ class FloodGlanceView extends WatchUi.GlanceView {
         dc.drawText(
             5,
             (height * 0.52).toNumber(),
-            Graphics.FONT_GLANCE_NUMBER,
-            _model.currentDischarge.format("%.0f"),
+            Graphics.FONT_XTINY,
+            _model.currentDischarge.format("%.0f") + " m³/s",
             Graphics.TEXT_JUSTIFY_LEFT
         );
     }
