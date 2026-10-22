@@ -1,6 +1,7 @@
 import Toybox.Lang;
 import Toybox.System;
 
+(:background, :glance)
 class FloodDataModel {
     var currentDischarge as Float = 0.0f;
     var medianDischarge as Float = 0.0f;

@@ -2,6 +2,7 @@ import Toybox.System;
 import Toybox.Communications;
 import Toybox.Lang;
 
+(:background)
 class FloodService {
     private var _notifyCallback as
         (Method(data as Dictionary or String or Null) as Void);
